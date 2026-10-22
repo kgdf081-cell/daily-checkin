@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日打卡与完成评估 · 使用说明</title>
+<style>
+:root{--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--blue:#1f4e79;--blue2:#2e75b6;--bg:#f5f7fa;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.75}
+main{max-width:880px;margin:0 auto;padding:22px 16px 60px}
+header{background:linear-gradient(135deg,#1f4e79,#2e75b6);color:#fff;border-radius:18px;padding:28px 26px;box-shadow:0 10px 30px rgba(31,78,121,.18)}
+header .tag{font-size:13px;opacity:.85;letter-spacing:2px}
+header h1{margin:6px 0 8px;font-size:30px;letter-spacing:.5px}
+header p{margin:0;opacity:.92;font-size:15px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:14px}
+h2{font-size:19px;margin:0 0 12px;color:var(--blue);display:flex;align-items:center;gap:8px}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#e8f0f9;color:var(--blue);font-size:14px;flex-shrink:0}
+h3{font-size:15px;margin:18px 0 6px;color:#374151}
+p{margin:8px 0}
+ul,ol{margin:8px 0 8px 20px;padding:0}
+li{margin:4px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.step{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px}
+.step b{display:block;font-size:15px;margin-bottom:4px}
+.step span{font-size:13px;color:var(--muted)}
+.mono{font-family:Consolas,"SFMono-Regular",Menlo,monospace;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:5px;padding:1px 6px;font-size:13px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f3f6fa;color:#374151;font-weight:600}
+tr:nth-child(even) td{background:#fbfcfe}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.lg{display:flex;align-items:center;gap:7px;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:7px 12px;font-size:14px}
+.lg b{font-size:17px}
+.tip{background:#eff6ff;border-left:4px solid #3b82f6;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.warn{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.bad{background:#fef2f2;border-left:4px solid #ef4444;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:6px 14px;font-size:14px;margin:10px 0}
+.kv .k{color:var(--muted)}
+footer{text-align:center;color:#9ca3af;font-size:12px;margin-top:22px}
+@media (max-width:680px){.steps{grid-template-columns:1fr}.kv{grid-template-columns:1fr}header h1{font-size:24px}}
+@media print{body{background:#fff}header{box-shadow:none}section{break-inside:avoid;border:0;border-top:1px solid #ddd;border-radius:0}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="tag">DAILY CHECK-IN</div>
+  <h1>每日打卡与完成评估</h1>
+  <p>每天 22:00 提醒 · 四态打勾 · 自动评估 · 完成归档 · 回收站</p>
+</header>
+
+<section>
+  <h2><span class="n">1</span>三步开始</h2>
+  <div class="steps">
+    <div class="step"><b>① 安装提醒</b><span>双击 <span class="mono">安装提醒任务.cmd</span>，看到“完成”即可。只需做一次。</span></div>
+    <div class="step"><b>② 试一下提醒</b><span>双击 <span class="mono">测试提醒.cmd</span>，右下角应出现提醒卡片并播放提示音；点击卡片会打开表格。</span></div>
+    <div class="step"><b>③ 开始打卡</b><span>双击 <span class="mono">打开今日打卡.cmd</span>（建议发送快捷方式到桌面），自动补上今天这一列并打开表格。</span></div>
+  </div>
+  <div class="tip">建议放在固定目录，例如 <span class="mono">C:\DailyCheckin</span> 或 <span class="mono">%USERPROFILE%\Documents\DailyCheckin</span>。脚本使用相对路径，整个文件夹可以自由移动。</div>
+</section>
+
+<section>
+  <h2><span class="n">2</span>每天怎么用</h2>
+  <ol>
+    <li>22:00 电脑右下角出现提醒卡片（不抢焦点、不挡当前窗口）。</li>
+    <li>点击卡片，或双击 <span class="mono">每日打卡</span>，打开表格。</li>
+    <li>在<b>今天这一列</b>逐项选择状态，然后保存关闭。</li>
+    <li>表格里的“事项评估”“每日汇总”会自动刷新；手机可看 <span class="mono">report.html</span>。</li>
+  </ol>
+  <p>如果 22:00 电脑关机或休眠，下一次登录后会自动补发一次；同一天只提醒一次。</p>
+  <p><b>想提前记录：</b>不用等 22:00，直接双击 <span class="mono">打开今日打卡.cmd</span> 或你创建的桌面快捷方式。表格会打开并定位到今天这一列，左侧事项名固定不动，直接打勾即可。</p>
+</section>
+
+<section>
+  <h2><span class="n">3</span>四种打卡状态</h2>
+  <div class="legend">
+    <div class="lg"><b>✅</b> 完成：今天做了</div>
+    <div class="lg"><b>❌</b> 未做：明确没做</div>
+    <div class="lg"><b>➖</b> 不适用：今天不该做</div>
+    <div class="lg"><b>🩹</b> 补签：事后补记</div>
+    <div class="lg"><b>空</b> 还没打勾（过去日期会提示待补签）</div>
+  </div>
+  <p>单元格右侧有下拉箭头，直接选即可。➖ 不计入“应做天数”，所以出差、生病、休息日可以放心用。</p>
+</section>
+
+<section>
+  <h2><span class="n">4</span>事项：新增、完成、删除、恢复</h2>
+  <table>
+    <tr><th style="width:110px">想做什么</th><th>怎么做</th><th style="width:240px">结果</th></tr>
+    <tr><td><b>新增</b></td><td>在“打卡”页任意空白行填写事项名称；类型、权重、状态都有下拉。</td><td>从今天（或你第一次打勾的日期）开始统计。</td></tr>
+    <tr><td><b>全部完成</b></td><td>把“状态”改为 <b>已完成</b>。</td><td>停止打卡与统计，自动出现在“完成记录”，并记录完成日期。</td></tr>
+    <tr><td><b>删除</b></td><td>把“状态”改为 <b>已删除</b>。</td><td>进入“回收站”，记录删除日期和之前的完成次数。</td></tr>
+    <tr><td><b>恢复</b></td><td>把状态改回 <b>进行中</b>。</td><td>从回收站/完成记录中恢复，继续统计。</td></tr>
+  </table>
+  <div class="warn">不要把整行删掉，也不要在表格上方插入行或列——日期列会错位。减少事项请用“已删除”，它可恢复；只有从未用过的空白行，才可以直接清空名称。</div>
+  <p>“完成记录”和“回收站”是自动生成的清单，源数据仍在“打卡”页；不要把这两个页签当成操作入口。</p>
+</section>
+
+<section>
+  <h2><span class="n">5</span>补签与超期锁定</h2>
+  <ul>
+    <li>过去 <b>7 天</b>内的空白单元格会显示黄色虚线框，可以直接选 🩹补签。</li>
+    <li>超过 7 天仍是空白：评估时按“未做”计算，并出现在“超期锁定”列表里，不再有黄色提示。</li>
+    <li>补签只提高“含补签完成率”，不会改变“原始完成率”，所以数据不会失真。</li>
+    <li>7 天窗口可在 <span class="mono">config.json</span> 里改，例如改成 3 天更严格、10 天更宽松。</li>
+  </ul>
+  <div class="tip">“锁定”是统计口径上的锁定，不是禁止编辑。你仍然可以手动填 🩹，它会计入含补签率；但评估会保留原始记录的口径。</div>
+</section>
+
+<section>
+  <h2><span class="n">6</span>评估怎么看</h2>
+  <h3>事项评估（每项一行）</h3>
+  <p>近 7 天应做天数、原始完成、补签、不适用、原始完成率、含补签完成率、连续完成、连续中断、待补签、已补签、超期锁定、判定、建议。</p>
+  <h3>每日汇总</h3>
+  <p>今天完成了多少、昨天结算、近 7 天整体完成率（原始 / 含补签 / 加权），以及待补签、即将超期、超期锁定、懈怠、基本没做的名单。</p>
+  <h3>判定规则</h3>
+  <table>
+    <tr><th style="width:120px">判定</th><th>规则（近 7 个完整日，不含今天）</th></tr>
+    <tr><td><b>稳定坚持</b></td><td>原始完成 ≥ 6 天</td></tr>
+    <tr><td><b>正常</b></td><td>原始完成 4–5 天</td></tr>
+    <tr><td><b>懈怠</b></td><td>原始完成 2–3 天，或连续中断 2 天</td></tr>
+    <tr><td><b>基本没做</b></td><td>原始完成 ≤ 1 天，或连续中断 3 天</td></tr>
+    <tr><td><b>待观察</b></td><td>新事项不足 4 天且还没完成过，先不急着下结论</td></tr>
+  </table>
+  <p><b>加权完成率</b> = Σ(完成事项权重) ÷ Σ(应做事项权重)，高=3、中=2、低=1。➖ 不参与计算。</p>
+  <p>🩹 不打断“连续完成”，但不算原始完成；连续中断从昨天往前数，遇到 ✅ 或 🩹 就停。</p>
+</section>
+
+<section>
+  <h2><span class="n">7</span>提醒与补发</h2>
+  <ul>
+    <li>每天 <b>22:00</b> 运行一次：补今天日期列 → 刷新评估 → 右下角提醒卡片。</li>
+    <li>卡片内容：今日待办、昨日待补签、即将超期、近 7 天状态分布；点击卡片打开表格。</li>
+    <li>电脑关机/休眠错过：登录后 2 分钟检查一次，若当天还没提醒过就补发。</li>
+    <li>同一天只提醒一次，不会反复打扰。</li>
+    <li>卡片出现时会播放提示音（默认 <span class="mono">ding.wav</span>；也可以换成你自己的 <span class="mono">voice.wav</span>）。</li>
+    <li>音量：双击 <span class="mono">调整音量.cmd</span>，输入 0–100 即可，默认 70%。</li>
+  </ul>
+  <div class="warn">如果卡片没出现：先看 <span class="mono">log.txt</span> 最后几行有没有报错。卡片是脚本自己画的窗口，不依赖 Windows 通知设置，通常比系统气泡可靠。想改用系统气泡，把 <span class="mono">config.json</span> 里的 <span class="mono">"notifyMode": "window"</span> 改成 <span class="mono">"balloon"</span>。</div>
+</section>
+
+<section>
+  <h2><span class="n">8</span>手机怎么看</h2>
+  <p>每次评估都会生成 <span class="mono">report.html</span>，这是手机友好的只读报告：今日进度、昨日/近 7 天完成率、状态分布、每项明细、预警和 7 天趋势。</p>
+  <p>把 <span class="mono">report.html</span> 或 <span class="mono">checkin.xlsx</span> 发到微信/网盘，在手机上打开即可。手机端建议只看不改，避免和电脑同时编辑产生冲突。</p>
+  <div class="tip">想手机直接打勾，需要把整个文件夹放进 OneDrive 等同步盘，并接受“两边同时改可能冲突”的风险；当前版本默认不开启。</div>
+</section>
+
+<section>
+  <h2><span class="n">9</span>改配置</h2>
+  <div class="kv">
+    <div class="k">补签窗口</div><div><span class="mono">graceDays</span>：默认 7，可改 3 或 10</div>
+    <div class="k">提醒时间</div><div><span class="mono">reminderTime</span>：默认 <span class="mono">"22:00"</span></div>
+    <div class="k">卡片停留</div><div><span class="mono">keepSeconds</span>：默认 45 秒</div>
+    <div class="k">提示音</div><div><span class="mono">playSound</span>：默认 <span class="mono">true</span>；改成 <span class="mono">false</span> 可静音</div>
+    <div class="k">语音文件</div><div><span class="mono">voiceFile</span>：默认 <span class="mono">"ding.wav"</span>；想用自定义语音，把 <span class="mono">voice.wav</span> 放到同目录并改这里</div>
+    <div class="k">语音音量</div><div><span class="mono">voiceVolume</span>：0–100，默认 70；也可以双击 <span class="mono">调整音量.cmd</span></div>
+    <div class="k">提醒样式</div><div><span class="mono">notifyMode</span>：<span class="mono">"window"</span>（默认，右下角卡片）或 <span class="mono">"balloon"</span>（系统气泡）</div>
+    <div class="k">事项上限</div><div><span class="mono">maxItems</span>：建议 12（提示用，不强制）</div>
+  </div>
+  <p>用记事本改完保存即可，下次运行生效。改提醒时间后，需要在任务计划程序里把触发器时间也改一下，或重新双击一次 <span class="mono">安装提醒任务.cmd</span>。</p>
+</section>
+
+<section>
+  <h2><span class="n">10</span>文件说明</h2>
+  <table>
+    <tr><th style="width:220px">文件</th><th>作用</th></tr>
+    <tr><td><span class="mono">checkin.xlsx</span></td><td>唯一需要手动操作的表格：打卡、评估、汇总、完成记录、回收站、说明</td></tr>
+    <tr><td><span class="mono">report.html</span></td><td>手机友好的只读报告，每次评估自动刷新</td></tr>
+    <tr><td><span class="mono">config.json</span></td><td>补签天数、提醒时间、卡片停留等配置</td></tr>
+    <tr><td><span class="mono">voice.wav（可选）</span></td><td>你自己的提醒语音；放入同目录，并把 config.json 的 voiceFile 指向它</td></tr>
+    <tr><td><span class="mono">ding.wav</span></td><td>默认提示音；自定义语音后可以改回它</td></tr>
+    <tr><td><span class="mono">打开今日打卡.cmd</span></td><td>打开表格（会先补日期列）；可右键“发送到 → 桌面快捷方式”</td></tr>
+    <tr><td>桌面快捷方式（可选）</td><td>由 打开今日打卡.cmd 创建，随时打开今日打卡表</td></tr>
+    <tr><td><span class="mono">安装提醒任务.cmd</span></td><td>注册每天 22:00 的计划任务（只需一次）</td></tr>
+    <tr><td><span class="mono">测试提醒.cmd</span></td><td>立刻弹一次提醒，用来确认通知是否正常</td></tr>
+    <tr><td><span class="mono">检查提醒任务.cmd</span></td><td>查看计划任务的上次/下次运行时间，并生成诊断结果.txt</td></tr>
+    <tr><td><span class="mono">调整音量.cmd</span></td><td>输入 0–100 调整语音音量，并立即试听</td></tr>
+    <tr><td><span class="mono">立即评估.cmd</span></td><td>手动刷新评估，并在窗口里看结果</td></tr>
+    <tr><td><span class="mono">log.txt</span></td><td>运行日志：提醒、写回、异常</td></tr>
+    <tr><td><span class="mono">backup\</span></td><td>每次写回前自动备份，保留最近 14 份</td></tr>
+    <tr><td><span class="mono">tasks\DailyCheckin.xml</span></td><td>任务计划文件，可手动导入</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">11</span>常见问题</h2>
+  <h3>表格提示“未写回 / 正被 Excel 打开”</h3>
+  <p>说明你正开着表格。关掉 Excel，再双击“每日打卡”，或等下一次提醒，脚本会自动补上。</p>
+  <h3>双击“每日打卡”没反应</h3>
+  <p>看同目录的 <span class="mono">log.txt</span> 最后几行；多数情况是表格被占用，或文件被移动了位置。</p>
+  <h3>提醒卡片没出现</h3>
+  <p>先看 <span class="mono">log.txt</span> 最后几行有没有报错；再确认 <span class="mono">config.json</span> 里 <span class="mono">notifyMode</span> 仍是 <span class="mono">"window"</span>。卡片模式不依赖 Windows 通知设置，正常情况下会出现在屏幕右下角。</p>
+  <h3>没有声音</h3>
+  <p>检查系统音量和静音状态，确认 <span class="mono">config.json</span> 里 <span class="mono">playSound</span> 为 <span class="mono">true</span>，并确认 <span class="mono">voiceFile</span> 指向的文件（默认 <span class="mono">ding.wav</span>）与脚本在同一目录。</p>
+  <h3>任务计划没装成功</h3>
+  <p>安装脚本会给出提示。也可以手动打开“任务计划程序 → 导入任务”，选择 <span class="mono">tasks\DailyCheckin.xml</span>。这一步不需要管理员权限。装好后双击 <span class="mono">检查提醒任务.cmd</span>，可以看到任务的上次运行时间和下次运行时间。</p>
+  <h3>新增事项后，之前的日子算不算？</h3>
+  <p>不算。新事项从今天开始，除非你在过去日期里手动打勾，脚本会把第一次打勾的日期作为开始日期。</p>
+  <h3>想彻底重来</h3>
+  <p>先备份 <span class="mono">checkin.xlsx</span>，再把“打卡”页的事项名称清空、重新填写即可；不要删除日期行。</p>
+</section>
+
+<section>
+  <h2><span class="n">12</span>备份与注意</h2>
+  <ul>
+    <li>脚本每次写回前都会备份到 <span class="mono">backup\</span>，保留最近 14 份。</li>
+    <li>不要删除“打卡”页第 1 行隐藏的日期行；不要在 I 列之后插入非日期列。</li>
+    <li>表格正被 Excel 打开时，脚本会跳过写回，只做只读评估；这不会丢数据。</li>
+    <li>脚本重写表格时会按固定模板重新排版，你在表里额外加的颜色、批注可能被重置；数据本身不受影响。</li>
+    <li>电脑需要保持开机且未休眠，22:00 的提醒才会准时；休眠/关机靠登录后补发。</li>
+  </ul>
+</section>
+
+<footer>每日打卡与完成评估 · 本地运行，不联网、不上传数据</footer>
+</main>
+</body>
+</html>

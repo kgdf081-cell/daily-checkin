@@ -1,0 +1,19 @@
+# 个人数据与运行时生成
+checkin.xlsx
+~$checkin.xlsx
+backup/
+log.txt
+state.json
+cache.json
+report.html
+诊断结果.txt
+tasks/
+*.lnk
+voice.wav
+
+# 临时文件
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+.vscode/

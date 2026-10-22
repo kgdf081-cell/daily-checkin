@@ -1,0 +1,17 @@
+{
+    "graceDays":  7,
+    "maxItems":  12,
+    "minItemRows":  20,
+    "maxDateColumns":  730,
+    "weightMap":  {
+                      "高":  3,
+                      "中":  2,
+                      "低":  1
+                  },
+    "reminderTime":  "22:00",
+    "keepSeconds":  45,
+    "notifyMode":  "window",
+    "playSound":  true,
+    "voiceFile":  "ding.wav",
+    "voiceVolume":  70
+}
